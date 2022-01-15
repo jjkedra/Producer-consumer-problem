@@ -4,25 +4,20 @@
 #include <stdio.h>
 #include <unistd.h>
 
-/*
-This program provides a possible solution for producer-consumer problem using mutex and semaphore.
-I have used 5 producers and 5 consumers to demonstrate the solution. You can always play with these values.
-*/
-
 #define MaxItems 10 // Maximum items a producer can produce or a consumer can consume
 #define BufferSize 10// Size of the buffer
 
 // 0 pastry | 1 meat | 2 cheesecake | 3 cabbage
-sem_t emptyPastry;            // Number of empty slots in buffer
+sem_t emptyPastry;                  // Number of empty slots in buffer
 sem_t emptyMeat;
 sem_t emptyCheescake;
 sem_t emptyCabbage;
-sem_t fullPastry;             // Number of slots filled
+sem_t fullPastry;                   // Number of slots filled
 sem_t fullMeat;
 sem_t fullCheescake;
 sem_t fullCabbage;
-int in[4] = {0, 0, 0, 0};   // index at which producer will put the next data
-int buffer[4][BufferSize];  //arrays of buffers
+int in[4] = {0, 0, 0, 0};           // index at which producer will put the next data
+int buffer[4][BufferSize];          //arrays of buffers
 pthread_mutex_t mutexPastry;
 pthread_mutex_t mutexMeat;
 pthread_mutex_t mutexCheescake;
@@ -217,8 +212,5 @@ int main(int argc, char** argv)
         pthread_join(con[i], NULL);
     }
 
-
-
     return 0;
-
 }
